@@ -1,0 +1,30 @@
+.sidebar{
+    height: 100vh;
+    flex: 0.2;
+    min-width: 230px;
+    background-color: #040404;
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.sidebar_logo{
+    height: 70px;
+    margin-right: auto;
+    padding: 10px;
+}
+
+.sidebar_title{
+    margin-left: 10px;
+    padding: 5px;
+    font-size: 12px;
+}
+
+.playlist-container{
+    overflow: auto;
+    max-height: 50vh;
+}
+
+.playlist-container::-webkit-scrollbar{
+    display: none;
+}
