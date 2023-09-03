@@ -11,9 +11,9 @@ const Sidebar = () => {
     const [{ playlists, token }, dispatch] = useDataLayerValue()
 
     useEffect(() => {
-      //getting user playlists
-        const getPlaylistsData = async () => {
-            const response = await axios.get("https://api.spotify.com/v1/me/playlists", {
+        //getting user playlists
+        const getPlaylists = async () => {
+            const { data } = await axios.get("https://api.spotify.com/v1/me/playlists", {
                 headers: {
                     Authorization: 'Bearer ' + token,
                     "Content-Type": "application/json"
@@ -21,13 +21,12 @@ const Sidebar = () => {
             })
             dispatch({
                 type: 'SET_PLAYLISTS',
-                playlists: response.data
+                playlists: data
             });
         }
-        getPlaylistsData();
+        getPlaylists();
     }, [token, dispatch])
 
-    console.log(playlists);
     return (
         <div className='sidebar'>
             <img className="sidebar_logo" src="https://getheavy.com/wp-content/uploads/2019/12/spotify2019-830x350.jpg" alt="logo" />

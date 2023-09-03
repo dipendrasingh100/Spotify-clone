@@ -1,8 +1,10 @@
 .songRow {
-    margin-left: 20px;
-    padding: 20px;
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 0.3fr 3.1fr 2fr 0.1fr;
+    /* margin-left: 20px; */
+    padding: 0.5rem 1rem;
+    /* display: flex; */
+    /* align-items: center; */
     z-index: 100;
     color: white;
 }
@@ -30,4 +32,38 @@
 .songRow_album {
     height: 40px;
     width: 40px;
+}
+
+.list{
+    padding: 0.5rem 45px 0.3rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid gray;
+    position: sticky;
+    top: 84px;
+    z-index: 10;
+    transition: 0.3s;
+}
+
+.list .header_row{
+    display: grid;
+    grid-template-columns: 0.3fr 3fr 2fr 0.1fr;
+}
+
+.detail{
+    display: flex;
+}
+
+.col{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.bg{
+    margin: unset;
+    background-color: #1a1a1a;
+}
+
+.tracks{
+    margin: 0 30px;
 }

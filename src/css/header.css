@@ -2,6 +2,16 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 30px;
+    padding: 20px;
+    transition: 0.3s;
+    position: sticky;
+    left: 0;
+    top: 0;
+    z-index: 10;
+}
+
+.headerbg{
+    background-color: #2a2a2a;
 }
 
 .header_left {
@@ -18,13 +28,19 @@
 .header_left>input {
     border: none;
     width: 100%;
+    font-size: 1rem;
+    outline: none;
 }
 
 .header_right{
     display: flex;
+    justify-content: center;
     align-items: center;
+    background-color: black;
+    border-radius: 2rem;
+    padding: 0.3rem 0.8rem;
 } 
 
-.header_right>h4{
-    margin-left: 10px;
+.header_right>h5{
+    margin-left: 5px;
 }
