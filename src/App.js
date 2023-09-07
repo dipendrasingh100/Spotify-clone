@@ -3,7 +3,7 @@ import './App.css';
 import Login from './components/Login';
 import { getTokenFromResponse } from './spotify';
 import Player from './components/Player';
-import { useDataLayerValue } from './DataLayer';
+// import { useDataLayerValue } from './DataLayer';
 
 function App() {
   // const [, dispatch] = useDataLayerValue()

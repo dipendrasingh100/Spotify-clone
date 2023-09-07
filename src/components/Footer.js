@@ -5,7 +5,7 @@ import PlaylistPlayIcon from '@mui/icons-material/PlaylistPlay';
 import VolumeDownIcon from '@mui/icons-material/VolumeDown';
 import CurrentTrack from './CurrentTrack';
 import PlayerControls from './PlayerControls';
-import { useDataLayerValue } from '../DataLayer';
+// import { useDataLayerValue } from '../DataLayer';
 import axios from 'axios';
 
 const Footer = () => {
