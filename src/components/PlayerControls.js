@@ -9,7 +9,8 @@ import { useDataLayerValue } from '../DataLayer';
 import axios from 'axios';
 
 const PlayerControls = () => {
-    const [{ token, playerState }, dispatch] = useDataLayerValue()
+    const [{ playerState }, dispatch] = useDataLayerValue()
+    const token = window.sessionStorage.getItem("token")
 
     //requires Premium
     const changeTrack = async (type) => {
@@ -35,7 +36,7 @@ const PlayerControls = () => {
 
     const changeState = async () => {
         const state = playerState ? "pause" : "play"
-        const { data } = await axios.put(`https://api.spotify.com/v1/me/player/${state}`, {}, {
+        await axios.put(`https://api.spotify.com/v1/me/player/${state}`, {}, {
             headers: {
                 Authorization: 'Bearer ' + token,
                 "Content-Type": "application/json"
@@ -51,8 +52,8 @@ const PlayerControls = () => {
             <ShuffleIcon className='footer_green' />
             <SkipPreviousIcon className='footer_icon' onClick={() => changeTrack("previous")} />
             {playerState
-                ? <PauseCircleOutlineIcon className='footer_icon' fontSize='large' onClick={changeState}/>
-                : <PlayCircleOutlineIcon className='footer_icon' fontSize='large' onClick={changeState}/>
+                ? <PauseCircleOutlineIcon className='footer_icon' fontSize='large' onClick={changeState} />
+                : <PlayCircleOutlineIcon className='footer_icon' fontSize='large' onClick={changeState} />
             }
             <SkipNextIcon className='footer_icon' onClick={() => changeTrack("next")} />
             <RepeatIcon className='footer_green' />

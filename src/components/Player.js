@@ -7,7 +7,8 @@ import { useDataLayerValue } from '../DataLayer'
 import axios from 'axios'
 
 const Player = () => {
-    const [{ token }, dispatch] = useDataLayerValue()
+    const [, dispatch] = useDataLayerValue()
+    const token = window.sessionStorage.getItem("token")
 
     useEffect(() => {
         //getting user details 

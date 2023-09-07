@@ -3,7 +3,9 @@ import { useDataLayerValue } from '../DataLayer'
 import axios from 'axios'
 
 const CurrentTrack = () => {
-    const [{ token, currentlyPlaying }, dispatch] = useDataLayerValue()
+    const [{ currentlyPlaying }, dispatch] = useDataLayerValue()
+    const token = window.sessionStorage.getItem("token")
+
     useEffect(() => {
         //getting currently playing song
         const getCurrentTrack = async () => {
@@ -13,7 +15,6 @@ const CurrentTrack = () => {
                     "Content-Type": "application/json"
                 }
             })
-            console.log("current playing-> ", data.item);
             dispatch({
                 type: 'SET_PLAYING',
                 currentlyPlaying: data.item

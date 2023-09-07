@@ -11,7 +11,8 @@ import SongRow from './SongRow';
 import axios from 'axios';
 
 const Body = () => {
-  const [{ selectedPlaylist, token, selectedPlaylistId }, dispatch] = useDataLayerValue()
+  const [{ selectedPlaylist, selectedPlaylistId }, dispatch] = useDataLayerValue()
+  const token = window.sessionStorage.getItem("token")
 
   useEffect(() => {
     // fetching a default playlist 
@@ -49,12 +50,12 @@ const Body = () => {
       <Header navBackground={navBackground} />
 
       <div className="body_info">
-        <img src={selectedPlaylist?.images[0].url} alt="bg" />
+        <img src={selectedPlaylist?.images[0]?.url} alt="bg" />
         <div className="body_infoText">
           <strong className='type'>
             PLAYLIST
           </strong>
-          <h2 className='title'>Discover Weekly</h2>
+          <h2 className='title'>{selectedPlaylist?.name}</h2>
           <p className='description'>
             {selectedPlaylist?.description}
           </p>
@@ -87,7 +88,7 @@ const Body = () => {
         <div className="tracks">
           {
             selectedPlaylist?.tracks.items.map((item, index) =>
-              <SongRow track={item.track} key={index} index={index} />
+              <SongRow track={item.track} key={index} index={index}/>
             )
           }
         </div>

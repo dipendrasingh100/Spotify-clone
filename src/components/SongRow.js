@@ -1,15 +1,49 @@
 import React from 'react'
 import "../css/songrow.css"
+import axios from 'axios'
+import { useDataLayerValue } from '../DataLayer'
 
 const SongRow = ({ track, index }) => {
+    const [, dispatch] = useDataLayerValue()
+    const token = window.sessionStorage.getItem("token")
 
     const msToMinAndSec = (ms) => {
         const minutes = Math.floor(ms / 60000);
         const seconds = ((ms % 60000) / 1000).toFixed(0)
         return minutes + ":" + (seconds < 10 ? "0" : "") + seconds
     }
+
+    const playTrack = async (song) => {
+        const response = await axios.put(`https://api.spotify.com/v1/me/player/play`, {
+            context_uri: song.album.uri,
+            offset: {
+                position: song.track_number - 1
+            },
+            position_ms: 0,
+        }, {
+            headers: {
+                Authorization: 'Bearer ' + token,
+                "Content-Type": "application/json"
+            }
+        });
+        if (response.status === 204) {
+            dispatch({
+                type: "SET_PLAYING",
+                currentlyPlaying: song
+            })
+            dispatch({
+                type: "SET_PLAYER",
+                playerState: true
+            })
+        } else {
+            dispatch({
+                type: "SET_PLAYER",
+                playerState: true
+            })
+        }
+    }
     return (
-        <div className='songRow'>
+        <div className='songRow' onClick={() => playTrack(track)}>
             <div className="col">
                 <span>{index + 1}</span>
             </div>

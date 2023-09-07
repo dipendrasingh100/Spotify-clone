@@ -8,7 +8,8 @@ import { useDataLayerValue } from '../DataLayer';
 import axios from 'axios';
 
 const Sidebar = () => {
-    const [{ playlists, token }, dispatch] = useDataLayerValue()
+    const [{ playlists }, dispatch] = useDataLayerValue()
+    const token = window.sessionStorage.getItem("token")
 
     useEffect(() => {
         //getting user playlists
@@ -40,7 +41,7 @@ const Sidebar = () => {
             {/* Displaying userPlaylists */}
             <div className="playlist-container">
                 {playlists?.items?.map((playlist, index) => (
-                    <SideBarOption title={playlist.name} key={index} />
+                    <SideBarOption title={playlist.name} key={index} id={playlist.id} />
                 ))}
             </div>
         </div>
