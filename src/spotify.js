@@ -2,7 +2,7 @@ export const authEndpoint = "https://accounts.spotify.com/authorize";
 
 const clientId = "c890423ba1844397a78bb0a860b828cc";  //unique id for each user
 
-const redirectUri = "http://localhost:3000/";       //redirect url after authentication
+const redirectUri = "https://spotify-clone-dipendra.netlify.app/";       //redirect url after authentication
 
 const scopes = [
     "user-read-email",
