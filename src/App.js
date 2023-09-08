@@ -8,8 +8,8 @@ import Player from './components/Player';
 function App() {
   // const [, dispatch] = useDataLayerValue()
 
-  const token = window.sessionStorage.getItem("token")
-  console.log("token before login",token);
+  let token = window.sessionStorage.getItem("token")
+  console.log("token before login", token);
   if (!token) {
     const hash = getTokenFromResponse();
 
@@ -21,7 +21,7 @@ function App() {
       //   token: _token
       // })
       window.sessionStorage.setItem("token", _token)
-      console.log("token after login",token);
+      token = window.sessionStorage.getItem("token")
     }
   }
 
